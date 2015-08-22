@@ -16,15 +16,17 @@ public class MetaFieldServiceImpl implements MetaFieldService {
 
     @Override
     @Transactional
-    public void create(MetaField field) {
+    public String create(MetaField field) {
         metaFieldRepository.save(field);
+        return "create success";
     }
 
     @Override
     @Transactional
-    public void delete(int id) {
+    public String delete(int id) {
         MetaField f = metaFieldRepository.findOne(id);
         metaFieldRepository.delete(f);
+        return "delete success";
     }
 
     @Override
@@ -37,11 +39,12 @@ public class MetaFieldServiceImpl implements MetaFieldService {
 
     @Override
     @Transactional
-    public void update(MetaField field) {
+    public String update(MetaField field) {
         MetaField f = metaFieldRepository.findOne(field.getId());
         f.setId(field.getId());
         f.setType(field.getType());
         f.setValidator(f.getValidator());
+        return "update success";
     }
 
     @Override

@@ -16,15 +16,17 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     @Transactional
-    public void create(Role role) {
+    public String create(Role role) {
         roleRepository.save(role);
+        return "create success";
     }
 
     @Override
     @Transactional
-    public void delete(int id) {
+    public String delete(int id) {
         Role r = roleRepository.findOne(id);
         roleRepository.delete(r);
+        return "delete success";
     }
 
     @Override
@@ -37,10 +39,11 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     @Transactional
-    public void update(Role role) {
+    public String update(Role role) {
         Role r = roleRepository.findOne(role.getId());
         r.setId(role.getId());
         r.setRoleName(role.getRoleName());
+        return "update success";
     }
 
     @Override

@@ -18,27 +18,30 @@ public class FieldController implements AbstractController<Field> {
 
     @Override
     public Response list() {
-        return Response.status(200).entity(fieldService.findAll()).header("Access-Control-Allow-Origin", "*").build();
+        return Response.status(200).entity(fieldService.findAll()).build();
     }
 
     @Override
     public Response get(Integer id) {
         Field c = fieldService.findById(id);
-        return Response.status(200).entity(c).header("Access-Control-Allow-Origin", "*").build();
+        return Response.status(200).entity(c).build();
     }
 
     @Override
-    public void create(Field field) {
-        fieldService.create(field);
+    public Response create(Field field) {
+
+        return Response.status(200).entity(fieldService.create(field)).build();
     }
 
     @Override
-    public void delete(Integer id) {
-        fieldService.delete(id);
+    public Response delete(Integer id) {
+
+        return Response.status(200).entity(fieldService.delete(id)).build();
     }
 
     @Override
-    public void update(Field field) {
-        fieldService.update(field);
+    public Response update(Field field) {
+
+        return Response.status(200).entity(fieldService.update(field)).build();
     }
 }

@@ -5,6 +5,7 @@ import by.intexsoft.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.ws.rs.OPTIONS;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
@@ -18,27 +19,27 @@ public class CategoryController implements AbstractController<Category> {
 
     @Override
     public Response list() {
-        return Response.status(200).entity(categoryService.findAll()).header("Access-Control-Allow-Origin", "*").build();
+        return Response.status(200).entity(categoryService.findAll()).build();
     }
 
     @Override
     public Response get(Integer id) {
         Category c = categoryService.findById(id);
-        return Response.status(200).entity(c).header("Access-Control-Allow-Origin", "*").build();
+        return Response.status(200).entity(c).build();
     }
 
     @Override
-    public void create(Category category) {
-        categoryService.create(category);
+    public Response create(Category category) {
+        return Response.status(200).entity(categoryService.create(category)).build();
     }
 
     @Override
-    public void delete(Integer id) {
-        categoryService.delete(id);
+    public Response delete(Integer id) {
+        return Response.status(200).entity(categoryService.delete(id)).build();
     }
 
     @Override
-    public void update(Category category) {
-        categoryService.update(category);
+    public Response update(Category category) {
+        return Response.status(200).entity(categoryService.update(category)).build();
     }
 }

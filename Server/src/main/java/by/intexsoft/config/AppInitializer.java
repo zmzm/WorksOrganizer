@@ -31,10 +31,7 @@ public class AppInitializer implements WebApplicationInitializer {
         servletRegistration.addMapping("/*");
         servletRegistration.setLoadOnStartup(1);
         servletRegistration.setInitParameter("javax.ws.rs.Application", Base.class.getName());
-
-/*        Dynamic servlet = servletContext.addServlet(DISPATCHER_SERVLET_NAME, new DispatcherServlet(ctx));
-        servlet.addMapping("/");
-        servlet.setLoadOnStartup(1);*/
+        servletRegistration.setInitParameter("com.sun.jersey.spi.container.ContainerResponseFilters", CORSResponseFilter.class.getName());
     }
 
 }

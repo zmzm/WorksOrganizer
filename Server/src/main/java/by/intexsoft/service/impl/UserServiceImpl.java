@@ -16,15 +16,17 @@ public class UserServiceImpl implements UserService{
 
     @Override
     @Transactional
-    public void create(User user) {
+    public String create(User user) {
         userRepository.save(user);
+        return "create success";
     }
 
     @Override
     @Transactional
-    public void delete(int id) {
+    public String delete(int id) {
         User u = userRepository.findOne(id);
         userRepository.delete(u);
+        return "delete success";
     }
 
     @Override
@@ -37,12 +39,13 @@ public class UserServiceImpl implements UserService{
 
     @Override
     @Transactional
-    public void update(User user) {
+    public String update(User user) {
         User u = userRepository.findOne(user.getId());
         u.setId(user.getId());
         u.setRoleId(user.getRoleId());
         user.setUserName(user.getUserName());
         user.setUserPassword(user.getUserPassword());
+        return "update success";
 
     }
 

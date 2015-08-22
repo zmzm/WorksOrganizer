@@ -18,27 +18,30 @@ public class MetaFieldController implements AbstractController<MetaField> {
 
     @Override
     public Response list() {
-        return Response.status(200).entity(metaFieldService.findAll()).header("Access-Control-Allow-Origin", "*").build();
+        return Response.status(200).entity(metaFieldService.findAll()).build();
     }
 
     @Override
     public Response get(Integer id) {
         MetaField c = metaFieldService.findById(id);
-        return Response.status(200).entity(c).header("Access-Control-Allow-Origin", "*").build();
+        return Response.status(200).entity(c).build();
     }
 
     @Override
-    public void create(MetaField field) {
-        metaFieldService.create(field);
+    public Response create(MetaField field) {
+
+        return Response.status(200).entity(metaFieldService.create(field)).build();
     }
 
     @Override
-    public void delete(Integer id) {
-        metaFieldService.delete(id);
+    public Response delete(Integer id) {
+
+        return Response.status(200).entity(metaFieldService.delete(id)).build();
     }
 
     @Override
-    public void update(MetaField field) {
-        metaFieldService.update(field);
+    public Response update(MetaField field) {
+
+        return Response.status(200).entity(metaFieldService.update(field)).build();
     }
 }

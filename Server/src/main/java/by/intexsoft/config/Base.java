@@ -1,6 +1,7 @@
 package by.intexsoft.config;
 
 import by.intexsoft.controller.*;
+import com.sun.jersey.spi.container.ContainerResponseFilter;
 import org.glassfish.jersey.jackson.JacksonFeature;
 
 import javax.ws.rs.core.Application;
@@ -20,6 +21,7 @@ public class Base extends Application {
         s.add(RoleController.class);
         s.add(UserController.class);
         s.add(CORSResponseFilter.class);
+        s.add(ContainerResponseFilter.class);
         s.add(JacksonFeature.class);
         return s;
     }

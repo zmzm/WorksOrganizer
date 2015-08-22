@@ -16,15 +16,17 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     @Transactional
-    public void create(Report report) {
+    public String create(Report report) {
         reportRepository.save(report);
+        return "create success";
     }
 
     @Override
     @Transactional
-    public void delete(int id) {
+    public String delete(int id) {
         Report r = reportRepository.findOne(id);
         reportRepository.delete(r);
+        return "delete success";
     }
 
     @Override
@@ -37,12 +39,13 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     @Transactional
-    public void update(Report report) {
+    public String update(Report report) {
         Report r = reportRepository.findOne(report.getId());
         r.setId(report.getId());
         r.setName(report.getName());
         r.setProcess(report.getProcess());
         r.setCategory(report.getCategory());
+        return "update success";
 
     }
 

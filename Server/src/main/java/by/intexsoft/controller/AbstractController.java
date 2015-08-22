@@ -7,7 +7,6 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 public interface AbstractController<T> {
-
     @GET
     @Path("/list")
     @Produces(MediaType.APPLICATION_JSON)
@@ -21,14 +20,16 @@ public interface AbstractController<T> {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public void create(T value);
+    public Response create(T value);
 
     @DELETE
     @Path("/{id}")
-    public void delete(@PathParam("id") Integer id);
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response delete(@PathParam("id") Integer id);
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public void update(T value);
+    public Response update(T value);
 }

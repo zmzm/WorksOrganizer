@@ -18,27 +18,30 @@ public class ProcessStepController implements AbstractController<ProcessStep> {
 
     @Override
     public Response list() {
-        return Response.status(200).entity(processStepService.findAll()).header("Access-Control-Allow-Origin", "*").build();
+        return Response.status(200).entity(processStepService.findAll()).build();
     }
 
     @Override
     public Response get(Integer id) {
         ProcessStep p = processStepService.findById(id);
-        return Response.status(200).entity(p).header("Access-Control-Allow-Origin", "*").build();
+        return Response.status(200).entity(p).build();
     }
 
     @Override
-    public void create(ProcessStep value) {
-        processStepService.create(value);
+    public Response create(ProcessStep value) {
+
+        return Response.status(200).entity(processStepService.create(value)).build();
     }
 
     @Override
-    public void delete(Integer id) {
-        processStepService.delete(id);
+    public Response delete(Integer id) {
+
+        return Response.status(200).entity(processStepService.delete(id)).build();
     }
 
     @Override
-    public void update(ProcessStep value) {
-        processStepService.update(value);
+    public Response update(ProcessStep value) {
+
+        return Response.status(200).entity(processStepService.update(value)).build();
     }
 }

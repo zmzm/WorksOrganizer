@@ -17,27 +17,29 @@ public class ProcessController implements AbstractController<Process>{
 
     @Override
     public Response list() {
-        return Response.status(200).entity(processService.findAll()).header("Access-Control-Allow-Origin", "*").build();
+        return Response.status(200).entity(processService.findAll()).build();
     }
 
     @Override
     public Response get(Integer id) {
         Process c = processService.findById(id);
-        return Response.status(200).entity(c).header("Access-Control-Allow-Origin", "*").build();
+        return Response.status(200).entity(c).build();
     }
 
     @Override
-    public void create(Process process) {
-        processService.create(process);
+    public Response create(Process process) {
+
+        return Response.status(200).entity(processService.create(process)).build();
     }
 
     @Override
-    public void delete(Integer id) {
-        processService.delete(id);
+    public Response delete(Integer id) {
+        return Response.status(200).entity(processService.delete(id)).build();
     }
 
     @Override
-    public void update(Process process) {
-        processService.update(process);
+    public Response update(Process process) {
+
+        return Response.status(200).entity(processService.update(process)).build();
     }
 }

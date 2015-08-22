@@ -16,15 +16,17 @@ public class ProcessServiceImpl implements ProcessService {
 
     @Override
     @Transactional
-    public void create(Process process) {
+    public String create(Process process) {
         processRepository.save(process);
+        return "create success";
     }
 
     @Override
     @Transactional
-    public void delete(int id) {
+    public String delete(int id) {
         Process process = processRepository.findOne(id);
         processRepository.delete(process);
+        return "delete success";
     }
 
     @Override
@@ -37,10 +39,11 @@ public class ProcessServiceImpl implements ProcessService {
 
     @Override
     @Transactional
-    public void update(Process process) {
+    public String update(Process process) {
         Process p = processRepository.findOne(process.getId());
         p.setName(process.getName());
         p.setId(process.getId());
+        return "update success";
     }
 
     @Override

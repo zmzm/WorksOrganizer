@@ -1,23 +1,23 @@
 package by.intexsoft.config;
 
-import java.io.IOException;
+import com.sun.jersey.spi.container.ContainerRequest;
+import com.sun.jersey.spi.container.ContainerResponse;
+import com.sun.jersey.spi.container.ContainerResponseFilter;
 
-import javax.ws.rs.container.ContainerRequestContext;
-import javax.ws.rs.container.ContainerResponseContext;
-import javax.ws.rs.container.ContainerResponseFilter;
-import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.ext.Provider;
 
+@Provider
 public class CORSResponseFilter implements ContainerResponseFilter {
 
-    public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext)
-            throws IOException {
+    @Override
+    public ContainerResponse filter(ContainerRequest request, ContainerResponse response) {
+        response.getHttpHeaders().add("Access-Control-Allow-Origin", "*");
+        response.getHttpHeaders().add("Access-Control-Allow-Headers",
+                "origin, content-type, accept, authorization");
+        response.getHttpHeaders().add("Access-Control-Allow-Credentials", "true");
+        response.getHttpHeaders().add("Access-Control-Allow-Methods",
+                "GET, POST, PUT, DELETE, OPTIONS, HEAD");
 
-        MultivaluedMap<String, Object> headers = responseContext.getHeaders();
-
-        headers.add("Access-Control-Allow-Origin", "*");
-        headers.add("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
-        headers.add("Access-Control-Allow-Headers", "X-Requested-With");
+        return response;
     }
-
-
 }

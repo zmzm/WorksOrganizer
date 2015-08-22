@@ -18,27 +18,30 @@ public class RoleController implements AbstractController<Role>{
 
     @Override
     public Response list() {
-        return Response.status(200).entity(roleService.findAll()).header("Access-Control-Allow-Origin", "*").build();
+        return Response.status(200).entity(roleService.findAll()).build();
     }
 
     @Override
     public Response get(Integer id) {
         Role r = roleService.findById(id);
-        return Response.status(200).entity(r).header("Access-Control-Allow-Origin", "*").build();
+        return Response.status(200).entity(r).build();
     }
 
     @Override
-    public void create(Role value) {
-        roleService.create(value);
+    public Response create(Role value) {
+
+        return Response.status(200).entity(roleService.create(value)).build();
     }
 
     @Override
-    public void delete(Integer id) {
-        roleService.delete(id);
+    public Response delete(Integer id) {
+
+        return Response.status(200).entity(roleService.delete(id)).build();
     }
 
     @Override
-    public void update(Role value) {
-        roleService.update(value);
+    public Response update(Role value) {
+
+        return Response.status(200).entity(roleService.update(value)).build();
     }
 }

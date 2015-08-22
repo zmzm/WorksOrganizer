@@ -2,6 +2,7 @@ package by.intexsoft.controller;
 
 import by.intexsoft.model.Report;
 import by.intexsoft.service.ReportService;
+import com.sun.jersey.core.spi.factory.ResponseImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,27 +19,30 @@ public class ReportController implements AbstractController<Report>{
 
     @Override
     public Response list() {
-        return Response.status(200).entity(reportService.findAll()).header("Access-Control-Allow-Origin", "*").build();
+        return Response.status(200).entity(reportService.findAll()).build();
     }
 
     @Override
     public Response get(Integer id) {
         Report r = reportService.findById(id);
-        return Response.status(200).entity(r).header("Access-Control-Allow-Origin", "*").build();
+        return Response.status(200).entity(r).build();
     }
 
     @Override
-    public void create(Report value) {
-        reportService.create(value);
+    public Response create(Report value) {
+
+        return Response.status(200).entity(reportService.create(value)).build();
     }
 
     @Override
-    public void delete(Integer id) {
-        reportService.delete(id);
+    public Response delete(Integer id) {
+
+        return Response.status(200).entity(reportService.delete(id)).build();
     }
 
     @Override
-    public void update(Report value) {
-        reportService.update(value);
+    public Response update(Report value) {
+
+        return Response.status(200).entity(reportService.update(value)).build();
     }
 }

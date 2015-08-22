@@ -16,15 +16,17 @@ public class FieldServiceImpl implements FieldService {
 
     @Override
     @Transactional
-    public void create(Field field) {
+    public String create(Field field) {
         fieldRepository.save(field);
+        return "create success";
     }
 
     @Override
     @Transactional
-    public void delete(int id) {
+    public String delete(int id) {
         Field f = fieldRepository.findOne(id);
         fieldRepository.delete(f);
+        return "delete success";
     }
 
     @Override
@@ -37,13 +39,14 @@ public class FieldServiceImpl implements FieldService {
 
     @Override
     @Transactional
-    public void update(Field field) {
+    public String update(Field field) {
         Field f = fieldRepository.findOne(field.getId());
         f.setId(field.getId());
         f.setName(field.getName());
         f.setMeta(field.getMeta());
         f.setStep(field.getStep());
         f.setValue(field.getValue());
+        return "update success";
     }
 
     @Override

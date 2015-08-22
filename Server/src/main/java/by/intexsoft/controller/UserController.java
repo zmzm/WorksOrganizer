@@ -18,27 +18,29 @@ public class UserController implements AbstractController<User>{
 
     @Override
     public Response list() {
-        return Response.status(200).entity(userService.findAll()).header("Access-Control-Allow-Origin", "*").build();
+        return Response.status(200).entity(userService.findAll()).build();
     }
 
     @Override
     public Response get(Integer id) {
         User u = userService.findById(id);
-        return Response.status(200).entity(u).header("Access-Control-Allow-Origin", "*").build();
+        return Response.status(200).entity(u).build();
     }
 
     @Override
-    public void create(User value) {
-        userService.create(value);
+    public Response create(User value) {
+
+        return Response.status(200).entity(userService.create(value)).build();
     }
 
     @Override
-    public void delete(Integer id) {
-        userService.delete(id);
+    public Response delete(Integer id) {
+
+        return Response.status(200).entity(userService.delete(id)).build();
     }
 
     @Override
-    public void update(User value) {
-        userService.update(value);
+    public Response update(User value) {
+        return Response.status(200).entity(userService.update(value)).build();
     }
 }

@@ -16,15 +16,17 @@ public class ProcessStepServiceImpl implements ProcessStepService {
 
     @Override
     @Transactional
-    public void create(ProcessStep step) {
+    public String create(ProcessStep step) {
         processStepRepository.save(step);
+        return "create success";
     }
 
     @Override
     @Transactional
-    public void delete(int id) {
+    public String delete(int id) {
         ProcessStep step = processStepRepository.findOne(id);
         processStepRepository.delete(step);
+        return "delete success";
     }
 
     @Override
@@ -37,7 +39,7 @@ public class ProcessStepServiceImpl implements ProcessStepService {
 
     @Override
     @Transactional
-    public void update(ProcessStep step) {
+    public String update(ProcessStep step) {
         ProcessStep p = processStepRepository.findOne(step.getId());
         p.setId(step.getId());
         p.setName(step.getName());
@@ -45,6 +47,7 @@ public class ProcessStepServiceImpl implements ProcessStepService {
         p.setProcess(step.getProcess());
         p.setStatus(step.getStatus());
         p.setUser(step.getUser());
+        return "update success";
     }
 
     @Override
