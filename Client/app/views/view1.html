@@ -2,18 +2,10 @@
     <aside class="sidebar">
         <nav class="sidebar-nav">
             <ul class="metismenu" id="menu">
-                <li ng-repeat="category in vm.categories| filter:0" id="{{category.id}}">
-                    <a href="#/view1" aria-expanded="false">{{category.categoryName}}<span class="glyphicon arrow"></span></a>
-                    <ul aria-expanded="false">
-                        <li ng-repeat="subcategory in vm.categories| filter:category.id" id="{{subcategory.id}}">
-                            <a href="#" aria-expanded="false">{{subcategory.categoryName}}<span class="fa plus-times"></span></a></li>
-                        <!-- <li>
-                            <a href="#" aria-expanded="false">Category 1.3 <span class="fa plus-times"></span></a>
-                            <ul aria-expanded="false">
-                                <li><a href="#">Category 1.3.1</a></li>
-                            </ul>
-                        </li> -->
-                    </ul>
+                <li ng-repeat="category in vm.categories" id="{{category.id}}">
+                    {{category.categoryName}}
+                    (<a ng-click="vm.GetById(category)">Get</a>)
+                    (<a ng-click="vm.DeleteCategory(category)">Delete</a>)
                 </li>
             </ul>
         </nav>
