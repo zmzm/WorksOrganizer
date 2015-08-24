@@ -1,6 +1,8 @@
 package by.intexsoft.service.impl;
 
+import by.intexsoft.model.Category;
 import by.intexsoft.model.Report;
+import by.intexsoft.repository.CategoryRepository;
 import by.intexsoft.repository.ReportRepository;
 import by.intexsoft.service.ReportService;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,8 @@ import java.util.List;
 public class ReportServiceImpl implements ReportService {
     @Resource
     private ReportRepository reportRepository;
+    @Resource
+    private CategoryRepository categoryRepository;
 
     @Override
     @Transactional
@@ -54,5 +58,10 @@ public class ReportServiceImpl implements ReportService {
     public Report findById(int id) {
         Report r = reportRepository.findOne(id);
         return r;
+    }
+
+    @Override
+    public Report findByCategory(Category category) {
+        return reportRepository.findReportByCategory(category);
     }
 }

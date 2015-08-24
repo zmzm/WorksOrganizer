@@ -1,0 +1,27 @@
+<link href="../css/bootstrap.css" rel="stylesheet" />
+<link href="../css/font-awesome.css" rel="stylesheet" />
+<link href="../css/custom.css" rel="stylesheet" />
+
+<nav class="navbar navbar-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu" ng-controller="CategoryController as vm">
+            <li ng-repeat="category in vm.categories">
+                <a href='#/category/{{category}}'><i class="fa fa-edit "></i>{{category.categoryName}}</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<script src="../js/libs/jquery-1.10.2.js"></script>
+<script src="../js/libs/bootstrap.min.js"></script>
+<script src="../js/libs/jquery.metisMenu.js"></script>
+<script>
+                    $('#main-menu').metisMenu();
+                    $(window).bind("load resize", function () {
+                        if ($(this).width() < 768) {
+                            $('div.sidebar-collapse').addClass('collapse');
+                        } else {
+                            $('div.sidebar-collapse').removeClass('collapse');
+                        }
+                    });
+</script>

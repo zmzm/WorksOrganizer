@@ -1,9 +1,12 @@
 package by.intexsoft.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Report")
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Report{
     @Id
     @Column(name = "report_id")

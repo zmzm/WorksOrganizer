@@ -4,17 +4,23 @@
 angular.module('ClientApp', [
   'ngRoute',
   'ClientApp.CategoryCtrl',
-  'ClientApp.CategoryService'
+  'ClientApp.CategoryService',
+  'ClientApp.ReportCtrl',
+  'ClientApp.ReportService'
 ]).
 config(['$routeProvider', function($routeProvider) {
 $routeProvider
-                .when('/view1', {
-                    templateUrl: 'views/view1.html',
-                    controller: 'CategoryController',
+                .when('/', {
+                    templateUrl: 'views/home.html'
+                    //controller: 'CategoryController',
+                    //controllerAs: 'vm'
+                }).when('/category/:id', {
+                    templateUrl: 'views/report.html',
+                    controller: 'ReportController',
                     controllerAs: 'vm'
                 })
                 .otherwise({
-                    redirectTo: '/view1'
+                    redirectTo: '/'
                 });
         }]);
 })();

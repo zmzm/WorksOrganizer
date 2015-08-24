@@ -1,12 +1,13 @@
 package by.intexsoft.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 
 @Entity
 @Table(name = "Category")
-@XmlRootElement
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Category{
     @Id
     @Column(name = "category_id")

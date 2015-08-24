@@ -40,17 +40,14 @@ dependencies {
 
     compile 'mysql:mysql-connector-java:5.1.36'
 
-    //compile 'javax.ws.rs:jsr311-api:0.11'
     compile 'javax.ws.rs:javax.ws.rs-api:2.0.1'
-/*    compile 'com.sun.jersey:jersey-core:1.19'
-    compile 'com.sun.jersey:jersey-server:1.19'
-    compile 'com.sun.jersey:jersey-spring:1.0'*/
-    //compile 'com.sun.jersey:jersey-servlet:1.19'
 
     compile 'org.glassfish.jersey.core:jersey-server:2.21'
     compile 'org.glassfish.jersey.core:jersey-common:2.21'
     compile 'org.glassfish.jersey.containers:jersey-container-servlet:2.21'
     compile 'org.glassfish.jersey.media:jersey-media-json-jackson:2.21'
+    compile 'org.glassfish.jersey.media:jersey-media-json-processing:2.21'
+    compile 'org.glassfish.jersey.media:jersey-media-multipart:2.21'
     compile 'org.glassfish.jersey.containers:jersey-container-servlet-core:2.21'
     compile 'com.sun.jersey.contribs:jersey-spring:1.19'
 

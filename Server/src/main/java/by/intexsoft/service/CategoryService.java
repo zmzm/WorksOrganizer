@@ -1,6 +1,7 @@
 package by.intexsoft.service;
 
 import by.intexsoft.model.Category;
+import by.intexsoft.model.Report;
 
 import java.util.List;
 

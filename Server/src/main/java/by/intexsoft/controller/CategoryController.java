@@ -5,13 +5,15 @@ import by.intexsoft.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.ws.rs.OPTIONS;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.Path;
-import javax.ws.rs.core.Request;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
 @Component
 @Path("category")
+@Consumes("application/json")
+@Produces("application/json")
 public class CategoryController implements AbstractController<Category> {
 
     @Autowired(required = true)

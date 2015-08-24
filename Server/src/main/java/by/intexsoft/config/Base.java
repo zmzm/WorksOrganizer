@@ -23,6 +23,7 @@ public class Base extends Application {
         s.add(CORSResponseFilter.class);
         s.add(ContainerResponseFilter.class);
         s.add(JacksonFeature.class);
+        s.add(MyJacksonJsonProvider.class);
         return s;
     }
 }
