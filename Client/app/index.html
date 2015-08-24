@@ -18,14 +18,14 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a href="#">
+                        <a href="#/">
                             <img src="css/logo.png">
                         </a>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                            <li ng-if="globals.currentUser.username !== undefined"><a><span class="glyphicon glyphicon-user"></span> {{globals.currentUser.username}}</a></li>
+                            <li><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                         </ul>
                     </div>
 
@@ -47,11 +47,16 @@
 
         <script src="bower_components/angular/angular.js"></script>   
         <script src="bower_components/angular-route/angular-route.js"></script>  
+        <script src="bower_components/angular-cookies/angular-cookies.js"></script>  
         <script src="app.js"></script>
         <script src="js/controllers/categoryController.js"></script>
         <script src="js/services/categoryService.js"></script>
         <script src="js/controllers/reportController.js"></script>
         <script src="js/services/reportService.js"></script>
+        <script src="js/controllers/signInController.js"></script>
+        <script src="js/controllers/logInController.js"></script>
+        <script src="js/services/userService.js"></script>
+        <script src="js/services/authenticationService.js"></script>
 
         <script src="js/libs/jquery-1.10.2.js"></script>
         <script src="js/libs/bootstrap.min.js"></script>
