@@ -12,7 +12,10 @@
         'ClientApp.LogInCtrl',
         'ClientApp.Auth',
         'ClientApp.StepCtrl',
-        'ClientApp.StepService'
+        'ClientApp.StepService',
+        'ClientApp.FieldCtrl',
+        'ClientApp.FieldService',
+        'ClientApp.AdminCtrl'
     ]).
             config(['$routeProvider', function ($routeProvider) {
                     $routeProvider
@@ -34,6 +37,10 @@
                         templateUrl: 'views/step.html',
                         controller: 'StepController',
                         controllerAs: 'vm'
+                    }).when('/dashboard', {
+                        templateUrl: 'views/adminPage.html',
+                        controller: 'AdminController',
+                        controllerAs: 'vm'
                     })
                             .otherwise({
                                 redirectTo: '/'
@@ -53,7 +60,7 @@
             var restrictedPage = $.inArray($location.path(), ['/signup', '/login']) === -1;
             var loggedIn = $rootScope.globals.currentUser;
             if (restrictedPage && !loggedIn) {
-                $location.path('/login');
+                $location.path('/signup');
             }
         });
     }

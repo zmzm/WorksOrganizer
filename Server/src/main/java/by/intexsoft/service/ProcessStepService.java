@@ -10,5 +10,5 @@ public interface ProcessStepService {
     public List<ProcessStep> findAll();
     public String update(ProcessStep category);
     public ProcessStep findById(int id);
-    public ProcessStep getByProcess(by.intexsoft.model.Process process);
+    public List<ProcessStep> getByProcess(by.intexsoft.model.Process process);
 }

@@ -1,6 +1,7 @@
 package by.intexsoft.service.impl;
 
 import by.intexsoft.model.Field;
+import by.intexsoft.model.ProcessStep;
 import by.intexsoft.repository.FieldRepository;
 import by.intexsoft.service.FieldService;
 import org.springframework.stereotype.Service;
@@ -54,5 +55,10 @@ public class FieldServiceImpl implements FieldService {
     public Field findById(int id) {
         Field f = fieldRepository.findOne(id);
         return f;
+    }
+
+    @Override
+    public List<Field> getByStep(ProcessStep step) {
+        return fieldRepository.getStepByStep(step);
     }
 }

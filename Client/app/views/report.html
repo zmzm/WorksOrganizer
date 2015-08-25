@@ -1,8 +1,9 @@
-<h1>
-    <ul ng-if="vm.reports == ''">
-        No reports found.
+<div ng-if="vm.r.length !== 0">
+    <ul>
+        <h2><li><a href='#/report/{{vm.r.process.id}}'>{{vm.r.name}}</a></li></h2>
     </ul>
-    <ul ng-else>
-        <a href='#/report/{{vm.reports.process.id}}'>{{vm.reports.name}}</a>
-    </ul>
-</h1>
+</div>
+
+<div ng-if="vm.r.length === 0">
+    <h1>Reports not found.</h1>
+</div> 

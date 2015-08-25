@@ -8,9 +8,9 @@
                     
                     vm.login = function () {
                         vm.dataLoading = true;
-                        AuthenticationService.Login(vm.username, vm.password, function (response) {
+                        AuthenticationService.Login(vm.username, vm.password, function (response, user) {
                             if (response.success) {
-                                AuthenticationService.SetCredentials(vm.username, vm.password);
+                                AuthenticationService.SetCredentials(vm.username, vm.password, user.roleId.roleName);
                                 $location.path('/');
                             } else {
                                 vm.dataLoading = false;

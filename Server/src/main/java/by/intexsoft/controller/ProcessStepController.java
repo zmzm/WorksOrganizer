@@ -53,7 +53,7 @@ public class ProcessStepController implements AbstractController<ProcessStep> {
     @Path("/process")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    public ProcessStep getByProcess(by.intexsoft.model.Process process){
+    public List<ProcessStep> getByProcess(by.intexsoft.model.Process process){
         return processStepService.getByProcess(process);
     }
 }

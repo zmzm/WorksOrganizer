@@ -1,14 +1,14 @@
-<link href="css/bootstrap.css" rel="stylesheet" />
-<link href="css/font-awesome.css" rel="stylesheet" />
-<link href="css/custom.css" rel="stylesheet" />
+<link href="./css/bootstrap.css" rel="stylesheet" />
+<link href="./css/font-awesome.css" rel="stylesheet" />
+<link href="./css/custom.css" rel="stylesheet" />
 
 <nav class="navbar navbar-side" role="navigation" ng-if="globals.currentUser.username !== undefined">
-    <div class="sidebar-collapse">
-        <ul class="nav" id="main-menu" ng-controller="CategoryController as vm">
-            <li ng-repeat="category in vm.categories" ng-if="category.parentId == 0" class="dropdown">
+    <div class="sidebar-collapse" ng-controller="CategoryController as vm">
+        <ul class="nav" id="main-menu" ng-repeat="category in vm.categories" ng-if="category.parentId == 0">
+            <li>
                 <a href='#/category/{{category.id}}' class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-edit "></i>{{category.categoryName}}<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level" >
-                    <li ng-repeat="subcategory in vm.categories" ng-if='subcategory.parentId == category.id'>
+                <ul class="nav nav-second-level" ng-repeat="subcategory in vm.categories" ng-if='subcategory.parentId == category.id'>
+                    <li>
                         <a href="#/category/{{subcategory.id}}">{{subcategory.categoryName}}</a>
                     </li>
                 </ul>
@@ -17,9 +17,9 @@
     </div>
 </nav>
 
-<script src="js/libs/jquery-1.10.2.js"></script>
-<script src="js/libs/bootstrap.min.js"></script>
-<script src="js/libs/jquery.metisMenu.js"></script>
+<script src="./js/libs/jquery-1.10.2.js"></script>
+<script src="./js/libs/bootstrap.min.js"></script>
+<script src="./js/libs/jquery.metisMenu.js"></script>
 <script>
     $('#main-menu').metisMenu();
     $(window).bind("load resize", function () {

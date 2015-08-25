@@ -8,6 +8,7 @@
                     vm.reports = [];
                     vm.r = [];
                     GetReport();
+                    //ReportList();
 
                     function Reportlist() {
                         Report.GetAll()
@@ -33,9 +34,7 @@
                     function GetReport() {
                         Report.GetByCategory({id:$routeParams.id})
                                 .then(function (data) {
-                                    vm.reports = data;
-                                    //console.log(vm.reports.process);
-                                    //console.log(vm.reports);
+                                    vm.r = data;
                                 });
                     }
                     ;

@@ -58,7 +58,8 @@ public class ProcessStepServiceImpl implements ProcessStepService {
     }
 
     @Override
-    public ProcessStep getByProcess(by.intexsoft.model.Process process) {
+    @Transactional
+    public List<ProcessStep> getByProcess(by.intexsoft.model.Process process) {
         return processStepRepository.getStepByProcess(process);
     }
 }

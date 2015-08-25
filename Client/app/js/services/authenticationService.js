@@ -26,18 +26,20 @@
                             response = { success: false, message: 'Username or password is incorrect' };
                         }
                         console.log(response);
-                        callback(response);
+                        console.log(user);
+                        callback(response, user);
                     });
             }, 1000);
         }
 
-        function SetCredentials(username, password) {
+        function SetCredentials(username, password, role) {
             var authdata = Base64.encode(username + ':' + password);
 
             $rootScope.globals = {
                 currentUser: {
                     username: username,
-                    authdata: authdata
+                    authdata: authdata,
+                    role:role
                 }
             };
 
