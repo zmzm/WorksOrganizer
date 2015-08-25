@@ -1,23 +1,21 @@
 (function () {
     'use strict';
 
-    angular.module('ClientApp.CategoryCtrl', ['ngRoute'])
-            .controller('CategoryController', ['Category','$rootScope',
+    angular.module('ClientApp.CategoryCtrl', [])
+            .controller('CategoryController', ['Category', '$rootScope',
                 function (Category, $rootScope) {
+                    $('#main-menu').metisMenu();
                     var vm = this;
                     vm.categories = [];
                     vm.c = [];
                     Categorylist();
 
                     function Categorylist() {
-                       // if ($rootScope.globals.currentUser !== undefined) {
-                            console.log($rootScope.globals);
-                            Category.GetAll()
-                                    .then(function (data) {
-                                        vm.categories = data;
-                                        console.log(vm.categories);
-                                    });
-                       // }
+                        Category.GetAll()
+                                .then(function (data) {
+                                    vm.categories = data;
+                                    console.log(vm.categories);
+                                });
                     }
                     ;
 

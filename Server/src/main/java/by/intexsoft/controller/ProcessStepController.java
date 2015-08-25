@@ -1,11 +1,15 @@
 package by.intexsoft.controller;
 
-import by.intexsoft.model.ProcessStep;
+import by.intexsoft.model.*;
 import by.intexsoft.service.ProcessStepService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
@@ -43,5 +47,13 @@ public class ProcessStepController implements AbstractController<ProcessStep> {
     public Response update(ProcessStep value) {
 
         return Response.status(200).entity(processStepService.update(value)).build();
+    }
+
+    @POST
+    @Path("/process")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public ProcessStep getByProcess(by.intexsoft.model.Process process){
+        return processStepService.getByProcess(process);
     }
 }

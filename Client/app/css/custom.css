@@ -8,7 +8,7 @@ body {
 
 /*MAIN WRAPPER DIV*/
 
- #wrapper {
+#wrapper {
     width: 100%;
     margin-top:50px;
 }
@@ -17,7 +17,7 @@ body {
     padding: 15px 15px;
     min-height: 600px;
     background:#F3F3F3;
-   
+
 }
 /*THE CONTENT PORTION DIV*/
 #page-inner {
@@ -36,12 +36,12 @@ body {
 
 }
 .navbar-inverse {
-background-color: #FFF;
-border-color: #F3F3F3;
+    background-color: #FFF;
+    border-color: #F3F3F3;
 }
-    .navbar a:hover{
-        color:#000!important;
-    }
+.navbar a:hover{
+    color:#000!important;
+}
 .arrow {
     float: right;
 }
@@ -68,74 +68,74 @@ border-color: #F3F3F3;
     padding-left: 55px;
 }
 .sidebar-collapse , .sidebar-collapse .nav{
-	background:none;
+    background:none;
 }
 .sidebar-collapse .nav {
-	padding:0;
+    padding:0;
 }
 .sidebar-collapse .nav > li > a {
-background: #FFFFFF;
-text-shadow: none;
-color:#000;
+    background: #FFFFFF;
+    text-shadow: none;
+    color:#000;
 }
 .sidebar-collapse > .nav > li > a {
-	padding: 25px 10px;
+    padding: 25px 10px;
 }
 .sidebar-collapse > .nav > li {
-	border-bottom: 1px solid rgba(240, 240, 240, 1) !important;
+    border-bottom: 1px solid rgba(240, 240, 240, 1) !important;
 }
 .sidebar-collapse .nav > li > a:hover,
 .sidebar-collapse .nav > li > a:focus {
-	
-	background:#E7E7E7;
-	outline:0;
+
+    background:#e7e7e7;
+    outline:0;
 }
 .nav-second-level  > li:last-child > a:after,
 .nav-third-level  > li:last-child > a:after {
-	height:50%;
+    height:50%;
 }
 .nav-third-level > li > a:after,
 .nav-third-level > li > a:before  {
-	left:40px;
+    left:40px;
 }
 .navbar-side {
-	border:none;
-	background-color: #f3f3f3;
-	
+    border:none;
+    background-color: #f3f3f3;
+
 }
 
 .navbar-toggle {
-    background-color: black;
+    background-color: grey;
 }
 
 
 /*==============================================
     MEDIA QUERIES     
     =============================================*/
- 
- @media(min-width:768px) {
-     #page-wrapper{
-               margin: 0 0 0 260px;
+
+@media(min-width:768px) {
+    #page-wrapper{
+        margin: 0 0 0 260px;
         padding: 15px 30px;
         min-height: 1200px;
-		
+
     }
-	
-	
+
+
     .navbar-side {
         z-index: 1;
         position: absolute;
         width: 260px;
     }
-     
+
 }
-     @media(max-width:767px) {
-   
-  
+@media(max-width:767px) {
+
+
     .navbar {
- min-height: 0px!important; 
- margin-bottom: 0px!important; 
-}
-    
+        min-height: 0px!important; 
+        margin-bottom: 0px!important; 
+    }
+
 }
 

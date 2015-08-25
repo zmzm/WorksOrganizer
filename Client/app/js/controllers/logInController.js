@@ -14,6 +14,7 @@
                                 $location.path('/');
                             } else {
                                 vm.dataLoading = false;
+                                vm.error = response.message;
                             }
                         });
                     };

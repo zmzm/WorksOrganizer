@@ -1,6 +1,6 @@
 package by.intexsoft.service.impl;
 
-import by.intexsoft.model.ProcessStep;
+import by.intexsoft.model.*;
 import by.intexsoft.repository.ProcessStepRepository;
 import by.intexsoft.service.ProcessStepService;
 import org.springframework.stereotype.Service;
@@ -55,5 +55,10 @@ public class ProcessStepServiceImpl implements ProcessStepService {
     public ProcessStep findById(int id) {
         ProcessStep p = processStepRepository.findOne(id);
         return p;
+    }
+
+    @Override
+    public ProcessStep getByProcess(by.intexsoft.model.Process process) {
+        return processStepRepository.getStepByProcess(process);
     }
 }

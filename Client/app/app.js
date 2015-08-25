@@ -10,14 +10,14 @@
         'ClientApp.UserService',
         'ClientApp.SignInCtrl',
         'ClientApp.LogInCtrl',
-        'ClientApp.Auth'
+        'ClientApp.Auth',
+        'ClientApp.StepCtrl',
+        'ClientApp.StepService'
     ]).
             config(['$routeProvider', function ($routeProvider) {
                     $routeProvider
                             .when('/', {
                                 templateUrl: 'views/home.html'
-                                        //controller: 'CategoryController',
-                                        //controllerAs: 'vm'
                             }).when('/category/:id', {
                         templateUrl: 'views/report.html',
                         controller: 'ReportController',
@@ -29,6 +29,10 @@
                     }).when('/login', {
                         templateUrl: 'views/login.html',
                         controller: 'LogInController',
+                        controllerAs: 'vm'
+                    }).when('/report/:id', {
+                        templateUrl: 'views/step.html',
+                        controller: 'StepController',
                         controllerAs: 'vm'
                     })
                             .otherwise({

@@ -9,6 +9,7 @@ import java.util.List;
 public interface AbstractController<T> {
     @GET
     @Path("/list")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response list();
 

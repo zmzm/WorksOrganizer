@@ -31,10 +31,11 @@
                     };
 
                     function GetReport() {
-                        Report.GetByCategory($routeParams.id)
+                        Report.GetByCategory({id:$routeParams.id})
                                 .then(function (data) {
                                     vm.reports = data;
-                                    console.log(vm.reports);
+                                    //console.log(vm.reports.process);
+                                    //console.log(vm.reports);
                                 });
                     }
                     ;
