@@ -32,6 +32,7 @@
                     };
 
                     function GetReport() {
+                        console.log($routeParams.id)
                         Report.GetByCategory({id:$routeParams.id})
                                 .then(function (data) {
                                     vm.r = data;

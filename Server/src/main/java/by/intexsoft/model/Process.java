@@ -8,6 +8,7 @@ import java.util.List;
 public class Process{
     @Id
     @Column(name = "process_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "process_name")
     private String name;

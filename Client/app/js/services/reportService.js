@@ -28,7 +28,7 @@
             }
 
             function Create(data) {
-                return $http.delete('http://localhost:8080/Server/report', data).then(handleSuccess, handleError('Error creating Report'));
+                return $http.post('http://localhost:8080/Server/report', data).then(handleSuccess, handleError('Error creating Report'));
             }
 
             function GetByCategory(category) {

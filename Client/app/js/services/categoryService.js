@@ -28,7 +28,7 @@
             }
 
             function Create(data) {
-                return $http.delete('http://localhost:8080/Server/category', data).then(handleSuccess, handleError('Error creating Category'));
+                return $http.post('http://localhost:8080/Server/category', data).then(handleSuccess, handleError('Error creating Category'));
             }
 
             function handleSuccess(response) {

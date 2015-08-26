@@ -44,7 +44,7 @@
             </div>
         </div>
     </div>
-        <div class="col-lg-3 col-md-6">
+    <div class="col-lg-3 col-md-6">
         <div class="panel panel-success">
             <div class="panel-heading">
                 <div class="row">
@@ -59,4 +59,135 @@
             </div>
         </div>
     </div>
+</div>
+
+<ul class="nav nav-tabs">
+    <!-- <li class="active" ng-class="{ active: vm.isSet(1) }"><a ng-click="vm.setTab(1)">Category</a></li> -->
+    <li class="active" ng-class="{ active: vm.isSet(2) }"><a ng-click="vm.setTab(2)">Report</a></li>
+    <li ng-class="{ active: vm.isSet(3) }"><a ng-click="vm.setTab(3)">Process</a></li>
+    <li ng-class="{ active: vm.isSet(4) }"><a ng-click="vm.setTab(4)">Process Step</a></li>
+    <li ng-class="{ active: vm.isSet(5) }"><a ng-click="vm.setTab(5)">Field</a></li>
+    <li ng-class="{ active: vm.isSet(6) }"><a ng-click="vm.setTab(6)">Meta Field</a></li>
+</ul>
+<div ng-show="vm.isSet(1)">
+    <div class="col-md-6 col-md-offset-3">
+        <div ng-show="vm.error" class="alert alert-danger">{{vm.error}}</div>
+        <form name="form" ng-submit="vm.AddCategory()" role="form">
+            </br><div class="form-group" ng-class="{ 'has-error': form.categoryName.$dirty && form.categoryName.$error.required }">
+                <label for="username">Category Name</label>
+                <input type="text" name="categoryName" id="categoryName" class="form-control" ng-model="vm.categoryName" required />
+                <span ng-show="form.categoryName.$dirty && form.categoryName.$error.required" class="help-block">Categoryn ame is required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.parent.$dirty && form.parent.$error.required }">
+                <label for="username">Parent Category Name</label>
+                <input type="text" name="categoryName" id="categoryName" class="form-control" ng-model="vm.categoryName" required />
+                <span ng-show="form.categoryName.$dirty && form.categoryName.$error.required" class="help-block">Categoryn ame is required</span>
+            </div>
+            <div class="form-actions">
+                <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Create</button>
+                <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            </div>
+        </form>
+    </div>
+</div>
+<div ng-show="vm.isSet(2)">
+    <div class="col-md-6 col-md-offset-3">
+        <div ng-show="vm.error" class="alert alert-danger">{{vm.error}}</div>
+        <form name="form" ng-submit="vm.AddReport()" role="form">
+            </br><div class="form-group" ng-class="{ 'has-error': form.reportName.$dirty && form.reportName.$error.required }">
+                <label for="username">Report Name</label>
+                <input type="text" name="reportName" id="reportName" class="form-control" ng-model="vm.reportName" required />
+                <span ng-show="form.reportName.$dirty && form.reportName.$error.required" class="help-block">Report name is required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.categoryName.$dirty && form.categoryName.$error.required }">
+                <label for="username">Category Name</label>
+                <!-- select type="text" name="categoryName" id="categoryName" class="form-control" ng-model="vm.categoryName" required /> -->
+                <select class="form-control" ng-model="vm.c">
+                    <option name="categoryName" id="categoryName" ng-repeat="category in vm.categories" value="{{category.id}}">{{category.categoryName}}</option>
+                </select>
+                <span ng-show="form.categoryName.$dirty && form.categoryName.$error.required" class="help-block">Category name is required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.p.$dirty && form.p.$error.required }">
+                <label for="username">Process Name</label>
+                <!-- <input type="text" name="process" id="process" class="form-control" ng-model="vm.process" required /> -->
+                <select class="form-control"  ng-model="vm.p">
+                    <option name="p" id="p" ng-repeat="process in vm.processes" value="{{process.id}}">{{process.name}}</option>
+                </select>
+                <span ng-show="form.p.$dirty && form.p.$error.required" class="help-block">Process name is required</span>
+            </div>
+            <div class="form-actions">
+                <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Create</button>
+                <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            </div>
+        </form>
+    </div>
+</div>
+<div ng-show="vm.isSet(3)">
+    <div class="col-md-6 col-md-offset-3">
+        <div ng-show="vm.error" class="alert alert-danger">{{vm.error}}</div>
+        <form name="form" ng-submit="vm.AddProcess()" role="form">
+            </br><div class="form-group" ng-class="{ 'has-error': form.processName.$dirty && form.processName.$error.required }">
+                <label for="username">Process Name</label>
+                <input type="text" name="processName" id="processName" class="form-control" ng-model="vm.processName" required />
+                <span ng-show="form.processName.$dirty && form.processName.$error.required" class="help-block">Process name is required</span>
+            </div>
+            <div class="form-actions">
+                <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Create</button>
+                <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            </div>
+        </form>
+    </div>
+</div>
+<div ng-show="vm.isSet(4)">
+    <div class="col-md-6 col-md-offset-3">
+        <div ng-show="vm.error" class="alert alert-danger">{{vm.error}}</div>
+        <form name="form" ng-submit="vm.AddProcessStep()" role="form">
+            </br><div class="form-group" ng-class="{ 'has-error': form.stepName.$dirty && form.stepName.$error.required }">
+                <label for="username">Step Name</label>
+                <input type="text" name="stepName" id="stepName" class="form-control" ng-model="vm.stepName" required />
+                <span ng-show="form.stepName.$dirty && form.stepName.$error.required" class="help-block">Step name is required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.p.$dirty && form.p.$error.required }">
+                <label for="username">Process Name</label>
+                <!-- <input type="text" name="process" id="process" class="form-control" ng-model="vm.process" required /> -->
+                <select class="form-control"  ng-model="vm.stepProcess">
+                    <option name="p1" id="p1" ng-repeat="process in vm.processes" value="{{process.id}}">{{process.name}}</option>
+                </select>
+                <span ng-show="form.p.$dirty && form.p.$error.required" class="help-block">Process name is required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.u.$dirty && form.u.$error.required }">
+                <label for="username">User Name</label>
+                <!-- <input type="text" name="process" id="process" class="form-control" ng-model="vm.process" required /> -->
+                <select class="form-control"  ng-model="vm.userStep">
+                    <option name="u" id="u" ng-repeat="user in vm.users" value="{{user.id}}">{{user.userName}}</option>
+                </select>
+                <span ng-show="form.p.$dirty && form.p.$error.required" class="help-block">User name is required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.priorityStep.$dirty && form.priorityStep.$error.required }">
+                <label for="username">Step Priority</label>
+                <input type="text" name="priorityStep" id="priorityStep" class="form-control" ng-model="vm.priorityStep" required />
+                <span ng-show="form.priorityStep.$dirty && form.priorityStep.$error.required" class="help-block">Priority name is required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.p.$dirty && form.p.$error.required }">
+                <label for="username">Step Status</label>
+                <!-- <input type="text" name="process" id="process" class="form-control" ng-model="vm.process" required /> -->
+                <select class="form-control"  ng-model="vm.status">
+                    <option>New</option>
+                    <option>In progress</option>
+                    <option>Finished</option>
+                </select>
+                <span ng-show="form.p.$dirty && form.p.$error.required" class="help-block">Process name is required</span>
+            </div>
+            <div class="form-actions">
+                <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Create</button>
+                <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            </div>
+        </form>
+    </div>
+</div>
+<div ng-show="vm.isSet(5)">
+    <h3>Pane 5</h3>
+</div>
+<div ng-show="vm.isSet(6)">
+    <h3>Pane 6</h3>
 </div>

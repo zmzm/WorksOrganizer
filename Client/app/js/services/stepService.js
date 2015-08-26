@@ -29,7 +29,7 @@
             }
 
             function Create(data) {
-                return $http.delete('http://localhost:8080/Server/processstep', data).then(handleSuccess, handleError('Error creating Category'));
+                return $http.post('http://localhost:8080/Server/processstep', data).then(handleSuccess, handleError('Error creating Category'));
             }
             
             function GetByProcess(data) {

@@ -8,6 +8,7 @@ import java.util.List;
 public class ProcessStep {
     @Id
     @Column(name = "step_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "step_name")
     private String name;
@@ -18,7 +19,7 @@ public class ProcessStep {
     private Integer priority;
     @Column(name = "step_status")
     private String status;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User userId;
     @OneToMany

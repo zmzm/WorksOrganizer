@@ -8,6 +8,7 @@ import java.util.List;
 public class User{
     @Id
     @Column(name = "user_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "user_name")
     private String userName;
@@ -16,8 +17,8 @@ public class User{
     @OneToOne
     @JoinColumn(name = "role_id")
     private Role roleId;
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "userId")
-    private ProcessStep processStep;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userId")
+    private List<ProcessStep> processStep;
 
     public Integer getId() {
         return id;

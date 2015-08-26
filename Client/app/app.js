@@ -15,7 +15,9 @@
         'ClientApp.StepService',
         'ClientApp.FieldCtrl',
         'ClientApp.FieldService',
-        'ClientApp.AdminCtrl'
+        'ClientApp.AdminCtrl',
+        'ClientApp.ProcessService',
+        'ui.bootstrap'
     ]).
             config(['$routeProvider', function ($routeProvider) {
                     $routeProvider

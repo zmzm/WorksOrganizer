@@ -72,6 +72,7 @@
         <script src="bower_components/angular/angular.js"></script>   
         <script src="bower_components/angular-route/angular-route.js"></script>  
         <script src="bower_components/angular-cookies/angular-cookies.js"></script>  
+        <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>  
         <script src="app.js"></script>
         <script src="js/controllers/categoryController.js"></script>
         <script src="js/services/categoryService.js"></script>
@@ -85,20 +86,21 @@
         <script src="js/services/stepService.js"></script>
         <script src="js/controllers/fieldController.js"></script>
         <script src="js/services/fieldService.js"></script>
+        <script src="js/services/processService.js"></script>
         <script src="js/controllers/adminController.js"></script>
         <script>
-                                            $(window).bind("load", function () {
-                                    var timeout = setTimeout(function () {
-                                    $('#main-menu').metisMenu();
-                                    }, 100);
-                                    });
-                                            $(window).bind("load resize", function () {
-                                    if ($(this).width() < 768) {
-                                    $('div.sidebar-collapse').addClass('collapse')
-                                    } else {
-                                    $('div.sidebar-collapse').removeClass('collapse')
-                                    }
-                                    });
+                                    $(window).bind("load", function () {
+                            var timeout = setTimeout(function () {
+                            $('#main-menu').metisMenu();
+                            }, 100);
+                            });
+                                    $(window).bind("load resize", function () {
+                            if ($(this).width() < 768) {
+                            $('div.sidebar-collapse').addClass('collapse')
+                            } else {
+                            $('div.sidebar-collapse').removeClass('collapse')
+                            }
+                            });
         </script>
     </body>
 </html>

@@ -8,6 +8,7 @@ import java.util.List;
 public class MetaField {
     @Id
     @Column(name = "meta_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "meta_type")
     private String type;

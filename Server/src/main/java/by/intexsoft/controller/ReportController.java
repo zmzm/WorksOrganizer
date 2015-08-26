@@ -33,7 +33,6 @@ public class ReportController implements AbstractController<Report>{
 
     @Override
     public Response create(Report value) {
-
         return Response.status(200).entity(reportService.create(value)).build();
     }
 
