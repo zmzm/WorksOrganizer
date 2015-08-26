@@ -186,7 +186,36 @@
     </div>
 </div>
 <div ng-show="vm.isSet(5)">
-    <h3>Pane 5</h3>
+    <div class="col-md-6 col-md-offset-3">
+        <div ng-show="vm.error" class="alert alert-danger">{{vm.error}}</div>
+        <form name="form" ng-submit="vm.AddField()" role="form">
+            </br><div class="form-group" ng-class="{ 'has-error': form.fieldName.$dirty && form.fieldName.$error.required }">
+                <label for="username">Field Name</label>
+                <input type="text" name="fieldName" id="fieldName" class="form-control" ng-model="vm.fieldName" required />
+                <span ng-show="form.fieldName.$dirty && form.fieldName.$error.required" class="help-block">Field name is required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.fieldMeta.$dirty && form.fieldMeta.$error.required }">
+                <label for="username">Meta Name</label>
+                <!-- <input type="text" name="process" id="process" class="form-control" ng-model="vm.process" required /> -->
+                <select class="form-control"  ng-model="vm.fieldMeta">
+                    <option name="fieldMeta" id="fieldMeta" ng-repeat="meta in vm.metaFields" value="{{meta.id}}">{{meta.type}}</option>
+                </select>
+                <span ng-show="form.fieldMeta.$dirty && form.fieldMeta.$error.required" class="help-block">Meta name is required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.fieldStep.$dirty && form.fieldStep.$error.required }">
+                <label for="username">Process Step Name</label>
+                <!-- <input type="text" name="process" id="process" class="form-control" ng-model="vm.process" required /> -->
+                <select class="form-control"  ng-model="vm.fieldStep">
+                    <option name="fieldStep" id="fieldStep" ng-repeat="step in vm.steps" value="{{step.id}}">{{step.name}}</option>
+                </select>
+                <span ng-show="form.fieldStep.$dirty && form.fieldStep.$error.required" class="help-block">Step name is required</span>
+            </div>
+            <div class="form-actions">
+                <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Create</button>
+                <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            </div>
+        </form>
+    </div>
 </div>
 <div ng-show="vm.isSet(6)">
     <h3>Pane 6</h3>

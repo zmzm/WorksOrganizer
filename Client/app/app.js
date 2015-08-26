@@ -17,6 +17,7 @@
         'ClientApp.FieldService',
         'ClientApp.AdminCtrl',
         'ClientApp.ProcessService',
+        'ClientApp.MetaFieldService',
         'ui.bootstrap'
     ]).
             config(['$routeProvider', function ($routeProvider) {

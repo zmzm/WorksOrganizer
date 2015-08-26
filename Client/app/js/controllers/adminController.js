@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('ClientApp.AdminCtrl', ['ngRoute'])
-            .controller('AdminController', ['Field', 'Report', 'Step', 'Category', 'User', 'Process',
-                function (Field, Report, Step, Category, User, Process) {
+            .controller('AdminController', ['Field', 'Report', 'Step', 'Category', 'User', 'Process', 'MetaField',
+                function (Field, Report, Step, Category, User, Process, MetaField) {
                     var vm = this;
                     vm.tab = 2;
                     GetReportCount();
@@ -11,6 +11,7 @@
                     GetUserCount();
                     GetStepCount();
                     GetProcessCount();
+                    GetMetaFieldCount();
 
                     vm.setTab = function (newTab) {
                         vm.tab = newTab;
@@ -24,6 +25,13 @@
                         Report.GetAll()
                                 .then(function (data) {
                                     vm.reportCount = data.length;
+                                });
+                    }
+                    function GetMetaFieldCount() {
+                        MetaField.GetAll()
+                                .then(function (data) {
+                                    vm.metaFieldCount = data.length;
+                                    vm.metaFields = data;
                                 });
                     }
                     ;
@@ -56,6 +64,7 @@
                         Step.GetAll()
                                 .then(function (data) {
                                     vm.stepCount = data.length;
+                                    vm.steps = data;
                                 });
                     }
                     ;
@@ -82,25 +91,23 @@
                                 });
                     };
                     vm.AddProcessStep = function () {
-                        vm.step = {name:vm.stepName, priority:vm.priorityStep, status:vm.status, process:{id:vm.stepProcess}, user:{id:vm.userStep}};
+                        vm.step = {name: vm.stepName, priority: vm.priorityStep, status: vm.status, process: {id: vm.stepProcess}, user: {id: vm.userStep}};
                         Step.Create(vm.step)
                                 .then(function (data) {
                                     vm.info = data;
                                     console.log(vm.info);
                                 });
                     };
-                }])
-            .directive('showtab',
-                    function () {
-                        return {
-                            link: function (scope, element, attrs) {
-                                element.click(function (e) {
-                                    e.preventDefault();
-                                    $(element).tab('show');
-                                });
-                            }
-                        };
-                    });
+                    vm.AddField = function () {
+                        vm.field = {name: vm.fieldName, value: "", meta: {id: vm.fieldMeta}, step: {id: vm.fieldStep}};
+                        console.log(vm.field);
+                        Field.Create(vm.field)
+                         .then(function (data) {
+                         vm.info = data;
+                         console.log(vm.info);
+                         });
+                    };
+                }]);
 })();
 
 

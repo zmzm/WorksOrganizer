@@ -1,7 +1,33 @@
-<div ng-if="vm.r.length !== 0">
-    <ul>
-        <h2><li><a href='#/report/{{vm.r.process.id}}'>{{vm.r.name}}</a></li></h2>
-    </ul>
+<div ng-if="vm.r.length !== 0" style="padding-top: 50px">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Report Table</div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th><h4>#</h4></th>
+                                <th><h4>Report Name</h4></th>
+                                <th><h4>Process Name</h4></th>
+                                <th><h4>Status</h4></th>
+                                <th><h4></h4></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><h4>{{vm.r.id}}</h4></td>
+                                <td><h4><a href='#/report/{{vm.r.process.id}}'>{{vm.r.name}}</a></h4></td>
+                                <td><h4>{{vm.r.process.name}}</h4></td>
+                                <td><h4><span class="label label-sm label-success">Approved</span></h4></td>
+                                <td><h4>BUTTON</h4></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div ng-if="vm.r.length === 0">
