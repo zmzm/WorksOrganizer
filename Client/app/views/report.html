@@ -20,7 +20,7 @@
                                 <td><h4><a href='#/report/{{vm.r.process.id}}'>{{vm.r.name}}</a></h4></td>
                                 <td><h4>{{vm.r.process.name}}</h4></td>
                                 <td><h4><span class="label label-sm label-success">Approved</span></h4></td>
-                                <td><h4>BUTTON</h4></td>
+                                <td><button type="button" class="btn btn-primary">Generate</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -28,6 +28,7 @@
             </div>
         </div>
     </div>
+    
 </div>
 
 <div ng-if="vm.r.length === 0">

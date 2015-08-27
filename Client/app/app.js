@@ -2,6 +2,7 @@
     'use strict';
 
     angular.module('ClientApp', [
+        'ngCookies',
         'ngRoute',
         'ClientApp.CategoryCtrl',
         'ClientApp.CategoryService',
@@ -18,6 +19,7 @@
         'ClientApp.AdminCtrl',
         'ClientApp.ProcessService',
         'ClientApp.MetaFieldService',
+        'ClientApp.RoleService',
         'ui.bootstrap'
     ]).
             config(['$routeProvider', function ($routeProvider) {
@@ -48,7 +50,7 @@
                             .otherwise({
                                 redirectTo: '/'
                             });
-                }]);
+                }]).run(run);
 
     run.$inject = ['$rootScope', '$location', '$cookieStore', '$http'];
     function run($rootScope, $location, $cookieStore, $http) {
@@ -63,7 +65,7 @@
             var restrictedPage = $.inArray($location.path(), ['/signup', '/login']) === -1;
             var loggedIn = $rootScope.globals.currentUser;
             if (restrictedPage && !loggedIn) {
-                $location.path('/signup');
+                $location.path('/login');
             }
         });
     }

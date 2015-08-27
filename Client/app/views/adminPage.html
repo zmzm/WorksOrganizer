@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-3 col-md-6">
-        <div class="panel panel-success">
+        <div class="panel panel-green">
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
@@ -15,7 +15,7 @@
         </div>
     </div>
     <div class="col-lg-3 col-md-6">
-        <div class="panel panel-success">
+        <div class="panel panel-green">
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="col-lg-3 col-md-6">
-        <div class="panel panel-success">
+        <div class="panel panel-green">
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
@@ -45,7 +45,7 @@
         </div>
     </div>
     <div class="col-lg-3 col-md-6">
-        <div class="panel panel-success">
+        <div class="panel panel-green">
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-3">
@@ -67,7 +67,7 @@
     <li ng-class="{ active: vm.isSet(3) }"><a ng-click="vm.setTab(3)">Process</a></li>
     <li ng-class="{ active: vm.isSet(4) }"><a ng-click="vm.setTab(4)">Process Step</a></li>
     <li ng-class="{ active: vm.isSet(5) }"><a ng-click="vm.setTab(5)">Field</a></li>
-    <li ng-class="{ active: vm.isSet(6) }"><a ng-click="vm.setTab(6)">Meta Field</a></li>
+    <li ng-class="{ active: vm.isSet(6) }"><a ng-click="vm.setTab(6)">User</a></li>
 </ul>
 <div ng-show="vm.isSet(1)">
     <div class="col-md-6 col-md-offset-3">
@@ -218,5 +218,31 @@
     </div>
 </div>
 <div ng-show="vm.isSet(6)">
-    <h3>Pane 6</h3>
+    <div class="col-md-6 col-md-offset-3">
+        <div ng-show="vm.error" class="alert alert-danger">{{vm.error}}</div>
+        <form name="form" ng-submit="vm.AddUser()" role="form">
+            </br><div class="form-group" ng-class="{ 'has-error': form.userName.$dirty && form.userName.$error.required }">
+                <label for="username">User name</label>
+                <input type="text" name="userName" id="userName" class="form-control" ng-model="vm.userName" required />
+                <span ng-show="form.fieldName.$dirty && form.fieldName.$error.required" class="help-block">User name is required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.userRole.$dirty && form.userRole.$error.required }">
+                <label for="username">User role</label>
+                <!-- <input type="text" name="process" id="process" class="form-control" ng-model="vm.process" required /> -->
+                <select class="form-control"  ng-model="vm.userRole">
+                    <option name="userRole" id="userRole" ng-repeat="role in vm.roles" value="{{role.id}}">{{role.roleName}}</option>
+                </select>
+                <span ng-show="form.userRole.$dirty && form.userRole.$error.required" class="help-block">User role is required</span>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.userPassword.$dirty && form.userPassword.$error.required }">
+                <label for="username">User password</label>
+                <input type="text" name="userPassword" id="userPassword" class="form-control" ng-model="vm.userPassword" required />
+                <span ng-show="form.userPassword.$dirty && form.userPassword.$error.required" class="help-block">User password is required</span>
+            </div>
+            <div class="form-actions">
+                <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Create</button>
+                <img ng-if="vm.dataLoading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            </div>
+        </form>
+    </div>
 </div>

@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('ClientApp.ReportCtrl', ['ngRoute'])
-            .controller('ReportController', ['Report', '$routeParams',
-                function (Report, $routeParams) {
+            .controller('ReportController', ['Report', '$routeParams','Step',
+                function (Report, $routeParams, Step) {
                     var vm = this;
                     vm.reports = [];
                     vm.r = [];
@@ -31,11 +31,21 @@
                                 });
                     };
 
+                    vm.CheckReportStatus = function (report) {
+                        vm.status = false;
+                        Step.GetByProcess({id: report.process.id})
+                                .then(function (data) {
+                                    vm.steps = data;
+                                    console.log(vm.steps);
+                                });
+                    };
+
                     function GetReport() {
                         console.log($routeParams.id)
-                        Report.GetByCategory({id:$routeParams.id})
+                        Report.GetByCategory({id: $routeParams.id})
                                 .then(function (data) {
                                     vm.r = data;
+                                    console.log(vm.r);
                                 });
                     }
                     ;

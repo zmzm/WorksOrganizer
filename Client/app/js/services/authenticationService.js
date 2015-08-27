@@ -25,8 +25,6 @@
                         } else {
                             response = { success: false, message: 'Username or password is incorrect' };
                         }
-                        console.log(response);
-                        console.log(user);
                         callback(response, user);
                     });
             }, 1000);
