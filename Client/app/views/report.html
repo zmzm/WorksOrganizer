@@ -15,11 +15,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><h4>{{vm.r.id}}</h4></td>
-                                <td><h4><a href='#/report/{{vm.r.process.id}}'>{{vm.r.name}}</a></h4></td>
-                                <td><h4>{{vm.r.process.name}}</h4></td>
-                                <td><h4><span class="label label-sm label-success">Approved</span></h4></td>
+                            <tr ng-repeat="report in vm.r">
+                                <td><h4>{{report.id}}</h4></td>
+                                <td><h4><a href='#/report/{{report.process.id}}'>{{report.name}}</a></h4></td>
+                                <td><h4>{{report.process.name}}</h4></td>
+                                <td><h4><span class="label label-sm label-success">{{vm.reportStatus}}</span></h4></td>
                                 <td><button type="button" class="btn btn-primary">Generate</button></td>
                             </tr>
                         </tbody>

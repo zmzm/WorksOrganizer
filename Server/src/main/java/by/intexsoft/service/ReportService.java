@@ -11,5 +11,5 @@ public interface ReportService {
     public List<Report> findAll();
     public String update(Report report);
     public Report findById(int id);
-    public Report findByCategory(Category category);
+    public List<Report> findByCategory(Category category);
 }

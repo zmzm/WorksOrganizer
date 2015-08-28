@@ -61,7 +61,7 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public Report findByCategory(Category category) {
+    public List<Report> findByCategory(Category category) {
         return reportRepository.findReportByCategory(category);
     }
 }

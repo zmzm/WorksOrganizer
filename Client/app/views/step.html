@@ -8,21 +8,22 @@
             <hr></br>
             <button type="button" align="right" class="btn btn-success">Save</button><button type="button" class="btn btn-danger">Clear</button>
         </div> -->
+        <h4> Status: <span class="label label-sm label-success">{{vm.stepStatus}}</span></h4>
         <div class="col-md-6 col-md-offset-1">
             <div ng-show="vm.error" class="alert alert-danger">{{vm.error}}</div>
             <form name="form" ng-submit="vm.Save(field, field.value)" role="form" ng-repeat='field in vm.fields'>
-                </br><div class="form-group" ng-class="{ 'has-error': form.fieldName.$dirty && form.fieldName.$error.required }">
+                </br><div class="form-group" ng-class="{
+                            'has-error': form.fieldName.$dirty && form.fieldName.$error.required }">
                     <label for="fieldName"><h2>{{field.name}}</h2></label>
                     <input type="fieldName" name="fieldName" id="fieldName" class="form-control" ng-model="field.value" required />
                     <span ng-show="form.categoryName.$dirty && form.categoryName.$error.required" class="help-block">Field value is required</span>
                 </div>
                 <div class="form-actions">
-                    <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-success">Save</button>
+                    <button type="submit" onclick="swal('Good job!', 'The information may be saved :)', 'success')" class="btn btn-success">Save</button>
                     <button type="button" class="btn btn-danger">Clear</button>
                 </div>
             </form>
         </div>
-         local STATUS : {{vm.stepStatus}}
     </div>
     <div ng-if="vm.fields.length === 0">
         <h1>Fields not found.</h1>

@@ -18,47 +18,49 @@
                         Field.GetByStep(step)
                                 .then(function (data) {
                                     vm.fields = data;
-                                    var newCount = 0;
-                                    var inprogressCount = 0;
-                                    for (var i = 0; i < vm.fields.length; i++) {
-                                        if (vm.fields[i].value === undefined) {
-                                            newCount++;
-                                        }
-                                        else {
-                                            inprogressCount++;
-                                        }
-                                    }
-
-                                    if (inprogressCount > 0) {
-                                        vm.stepStatus = 'In progress';
-                                    }
-                                    if (inprogressCount === vm.fields.length) {
-                                        vm.stepStatus = 'Finished';
-                                    }
-                                    if (inprogressCount === 0) {
-                                        vm.stepStatus = 'New';
-                                    }
-
-                                    /*Step.Update({id: step.id, name: step.name, priority: step.priority,
-                                     process: step.process, status: vm.stepStatus, user: step.user});*/
                                 });
                     };
 
                     vm.Save = function (field, value) {
+                        vm.dataLoading = true;
                         Field.Update({id: field.id, name: field.name, value: value, meta: field.meta, step: field.step})
                                 .then(function (response) {
                                     var info = response;
                                     console.log(info);
                                 });
-                        //$route.reload();
-                        var step = {id: field.step.id, name: field.step.name, priority: field.step.priority,
-                            process: field.step.process, status: vm.stepStatus, user: field.step.user};
-                        vm.GetFields(step);
+
+                        $timeout(function () {
+                            Field.GetByStep(field.step)
+                                    .then(function (data) {
+                                        vm.fields = data;
+                                        var newCount = 0;
+                                        var inprogressCount = 0;
+                                        for (var i = 0; i < vm.fields.length; i++) {
+                                            if (vm.fields[i].value === undefined) {
+                                                newCount++;
+                                            }
+                                            else {
+                                                inprogressCount++;
+                                            }
+                                        }
+
+                                        if (inprogressCount > 0 && inprogressCount < vm.fields.length) {
+                                            vm.stepStatus = 'In progress';
+                                        }
+                                        else if (inprogressCount === vm.fields.length) {
+                                            vm.stepStatus = 'Finished';
+                                        }
+                                        else {
+                                            vm.stepStatus = 'New';
+                                        }
+                                    });
+                        }, 250);
+                        
                         $timeout(function () {
                             console.log(vm.stepStatus);
                             Step.Update({id: field.step.id, name: field.step.name, priority: field.step.priority,
                                 process: field.step.process, status: vm.stepStatus, user: field.step.user});
-                        }, 1000);
+                        }, 350);
                     };
 
                 }]);

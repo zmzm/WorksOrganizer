@@ -52,7 +52,7 @@ public class ReportController implements AbstractController<Report>{
     @Path("/category")
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces({MediaType.APPLICATION_JSON})
-    public Report getByCategory(Category id){
+    public List<Report> getByCategory(Category id){
         System.out.println(id.getCategoryName());
         return reportService.findByCategory(id);
     }
