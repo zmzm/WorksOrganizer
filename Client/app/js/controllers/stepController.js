@@ -11,6 +11,7 @@
                         Step.GetByProcess({id: $routeParams.id})
                                 .then(function (data) {
                                     vm.steps = data;
+                                    console.log(vm.stepStatus);
                                 });
                     }
                     ;
@@ -22,11 +23,9 @@
                     };
 
                     vm.Save = function (field, value) {
-                        vm.dataLoading = true;
                         Field.Update({id: field.id, name: field.name, value: value, meta: field.meta, step: field.step})
                                 .then(function (response) {
                                     var info = response;
-                                    console.log(info);
                                 });
 
                         $timeout(function () {
@@ -55,13 +54,30 @@
                                         }
                                     });
                         }, 250);
-                        
+
                         $timeout(function () {
-                            console.log(vm.stepStatus);
                             Step.Update({id: field.step.id, name: field.step.name, priority: field.step.priority,
                                 process: field.step.process, status: vm.stepStatus, user: field.step.user});
                         }, 350);
                     };
 
-                }]);
+                }])
+            .directive('myStatus', function () {
+                return {
+                    link: function (scope, element, attrs) {
+                        attrs.$observe("myStatus", function (val) {
+                            if (val === 'Finished') {
+                                element.html("<span class='label label-sm label-success'>" + attrs.myStatus + "</span>");
+                            }
+                            else if (val === 'In progress') {
+                                element.html("<span class='label label-sm label-warning'>" + attrs.myStatus + "</span>");
+                            }
+                            else {
+                                element.html("<span class='label label-sm label-primary'>" + attrs.myStatus + "</span>");
+                            }
+                        });
+                    }
+                };
+
+            });
 })();

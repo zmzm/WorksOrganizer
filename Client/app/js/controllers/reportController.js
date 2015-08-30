@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('ClientApp.ReportCtrl', ['ngRoute'])
-            .controller('ReportController', ['Report', '$routeParams', 'Step',
-                function (Report, $routeParams, Step) {
+            .controller('ReportController', ['Report', '$routeParams', 'Step','$timeout',
+                function (Report, $routeParams, Step, $timeout) {
                     var vm = this;
                     vm.reports = [];
                     vm.r = [];
@@ -32,12 +32,11 @@
                     };
 
                     function CheckReportStatus(report) {
-                         vm.reportStatus = [];
+                        vm.reportStatus = [];
                         for (var j = 0; j < report.length; j++) {
                             Step.GetByProcess({id: report[j].process.id})
                                     .then(function (data) {
                                         vm.steps = data;
-                                        console.log(vm.steps);
                                         var newCount = 0;
                                         var inProgressCount = 0;
                                         var finishedCount = 0;
@@ -61,6 +60,8 @@
                                         if (newCount === vm.steps.length) {
                                             vm.reportStatus = "New";
                                         }
+                                        //report[j].reportStatus = vm.reportStatus;
+                                        console.log(vm.reportStatus);
                                     });
                         }
                     }
@@ -72,6 +73,9 @@
                                 .then(function (data) {
                                     vm.r = data;
                                     CheckReportStatus(vm.r);
+                                    $timeout(function () {
+                                        console.log(vm.r);
+                                    }, 250);
                                 });
                     }
                     ;
