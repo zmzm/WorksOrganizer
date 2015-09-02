@@ -8,17 +8,17 @@
                         <thead>
                             <tr>
                                 <th><h4>#</h4></th>
-                                <th><h4>Report Name</h4></th>
-                                <th><h4>Process Name</h4></th>
-                                <th><h4></h4></th>
-                            </tr>
+                        <th><h4>Report Name</h4></th>
+                        <th><h4>Process Name</h4></th>
+                        <th><h4></h4></th>
+                        </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="report in vm.r">
                                 <td><h4>{{report.id}}</h4></td>
                                 <td><h4><a href='#/report/{{report.process.id}}'>{{report.name}}</a></h4></td>
                                 <td><h4>{{report.process.name}}</h4></td>
-                                <td><button type="button" class="btn btn-primary">Generate</button></td>
+                                <td><a href='#/generate/{{report.process.id}}/{{report.id}}'>Generate</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -26,9 +26,14 @@
             </div>
         </div>
     </div>
-    
+
 </div>
 
 <div ng-if="vm.r.length === 0">
-    <h1>Reports not found.</h1>
+    <div class="list-group">
+        <div class="list-group-item">
+            <h1 align="center">Reports not found :(</h1>
+        </div>
+        <img style="margin: 20px 0 0 160px; border: 1px solid; border-radius: 8px;"src="./css/lego-movie.jpg">
+    </div>
 </div> 

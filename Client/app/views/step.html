@@ -1,16 +1,11 @@
 <div ng-if="vm.steps.length !== 0">
     <h3><ul class="nav nav-tabs">
             <li ng-repeat='step in vm.steps'>
-                <div ng-if="vm.stepStatus === undefined">
-                     <h6 style="padding-left: 20px;"><div my-status="{{step.status}}"></div></h6>
-                </div>
-                <div ng-if="vm.stepStatus !== undefined">
-                     <h6 style="padding-left: 20px;"><div my-status="{{vm.stepStatus}}"></div></h6>
-                </div>
                 <a ng-click='vm.GetFields(step)'>{{step.name}}</a>
             </li>
         </ul></h3>
     <div ng-if="vm.fields.length !== 0">
+        <h4 align="rigth" style="padding-left: 20px;"><div my-status="{{vm.step.status}}"></div></h4>
         <div class="col-md-6 col-md-offset-1">
             <div ng-show="vm.error" class="alert alert-danger">{{vm.error}}</div>
             <form name="form" ng-submit="vm.Save(field, field.value)" role="form" ng-repeat='field in vm.fields'>
@@ -31,5 +26,12 @@
     </div>
 </div>
 <div ng-if="vm.steps.length === 0">
-    <h1>Steps not found.</h1>
+    <div class="list-group">
+        <div class="list-group-item">
+            <h1 align="center">Steps not found :(</h1>
+        </div>
+        <div class='col-md-6'>
+            <img style="margin: 20px 0 0 160px; border: 1px solid; border-radius: 8px;"src="./css/lego-movie.jpg">
+        </div>
+    </div>
 </div>

@@ -20,6 +20,7 @@
         'ClientApp.ProcessService',
         'ClientApp.MetaFieldService',
         'ClientApp.RoleService',
+        'ClientApp.ReportGeneratorCtrl',
         'ui.bootstrap'
     ]).
             config(['$routeProvider', function ($routeProvider) {
@@ -45,6 +46,10 @@
                     }).when('/dashboard', {
                         templateUrl: 'views/adminPage.html',
                         controller: 'AdminController',
+                        controllerAs: 'vm'
+                    }).when('/generate/:id1/:id2', {
+                        templateUrl: 'views/generateReport.html',
+                        controller: 'ReportGeneratorController',
                         controllerAs: 'vm'
                     })
                             .otherwise({

@@ -1,0 +1,16 @@
+<div ng-if="vm.steps.length !== 0">
+    <div align="center"><h2>{{vm.report.name}}</h2></div></br>
+    <div ng-repeat='field in vm.rfields'>
+        <div ng-repeat='f in field'>
+            <div>
+                <h4>{{f.name}}</h4> : <h5>{{f.value}}</h5>
+            </div>
+        </div>
+        <hr/>
+    </div> 
+    <form align="right">
+        <input TYPE="button" onClick="window.print()"  class="btn btn-outline btn-info" value="Print">
+    </form>
+</div>
+<div ng-if="vm.steps.length === 0">
+</div>

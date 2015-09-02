@@ -8,14 +8,18 @@
                     GetByProcess();
 
                     function GetByProcess() {
+                        console.log($routeParams.id);
                         Step.GetByProcess({id: $routeParams.id})
                                 .then(function (data) {
                                     vm.steps = data;
-                                    console.log(vm.stepStatus);
                                 });
                     }
                     ;
                     vm.GetFields = function (step) {
+                        Step.GetById(step.id)
+                                .then(function(data){
+                                    vm.step = data;
+                                })
                         Field.GetByStep(step)
                                 .then(function (data) {
                                     vm.fields = data;
@@ -45,12 +49,15 @@
 
                                         if (inprogressCount > 0 && inprogressCount < vm.fields.length) {
                                             vm.stepStatus = 'In progress';
+                                            vm.step.status = 'In progress';
                                         }
                                         else if (inprogressCount === vm.fields.length) {
                                             vm.stepStatus = 'Finished';
+                                            vm.step.status = 'Finished';
                                         }
                                         else {
                                             vm.stepStatus = 'New';
+                                            vm.step.status = 'New';
                                         }
                                     });
                         }, 250);

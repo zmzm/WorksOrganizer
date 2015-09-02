@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('ClientApp.ReportCtrl', ['ngRoute'])
-            .controller('ReportController', ['Report', '$routeParams', 'Step','$timeout',
-                function (Report, $routeParams, Step, $timeout) {
+            .controller('ReportController', ['Report', '$routeParams',
+                function (Report, $routeParams ) {
                     var vm = this;
                     vm.reports = [];
                     vm.r = [];
@@ -31,7 +31,7 @@
                                 });
                     };
 
-                    function CheckReportStatus(report) {
+                    /*function CheckReportStatus(report) {
                         vm.reportStatus = [];
                         for (var j = 0; j < report.length; j++) {
                             Step.GetByProcess({id: report[j].process.id})
@@ -65,17 +65,16 @@
                                     });
                         }
                     }
-                    ;
+                    ;*/
 
                     function GetReport() {
-                        console.log($routeParams.id);
                         Report.GetByCategory({id: $routeParams.id})
                                 .then(function (data) {
                                     vm.r = data;
-                                    CheckReportStatus(vm.r);
+                                    /*CheckReportStatus(vm.r);
                                     $timeout(function () {
                                         console.log(vm.r);
-                                    }, 250);
+                                    }, 250);*/
                                 });
                     }
                     ;
